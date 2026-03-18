@@ -81,6 +81,9 @@ function M.lsp_keymaps(event)
   -- See `:help telescope.builtin`
   local builtin = require 'telescope.builtin'
 
+  local function find_files_and_all_hidden() builtin.find_files { hidden = true, no_ignore = true } end
+
+  vim.keymap.set('n', '<leader>sa', find_files_and_all_hidden, { desc = '[S]earch [A]ll Files' })
   vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
   vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
   vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
