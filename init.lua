@@ -348,6 +348,13 @@ require('lazy').setup({
           },
         },
         tailwindcss = {},
+        pylsp = {
+          plugins = {
+            jedi = {
+              environment = './.venv',
+            },
+          },
+        },
       }
 
       -- Ensure the servers and tools above are installed
