@@ -635,8 +635,7 @@ require('lazy').setup({
         'markdown_inline',
         'python',
         'query',
-        'tsx',
-        'typescript',
+        typescript = { 'tsx', 'typescriptreact' },
         'vim',
         'vimdoc',
       }
