@@ -75,6 +75,18 @@ function M.general_keymaps()
   vim.api.nvim_create_user_command('QuitHidden', quit_hidden_cmd, { bang = true })
 
   vim.keymap.set('n', '<leader>tr', toggle_terminal, { desc = '[T]oggle [T]erminal' })
+
+  vim.keymap.set('n', '<leader>q', ':bdelete<CR>', { desc = '[Q]uit buffer' })
+
+  -- Navigate tabs
+  vim.keymap.set('n', 'gt', ':bnext<CR>', { desc = 'Next Buffer' })
+  vim.keymap.set('n', 'gT', ':bprevious<CR>', { desc = 'Previous Buffer' })
+
+  -- Navigate workspaces (native tabs)
+  vim.keymap.set('n', '<leader>wt', ':tabnext<CR>', { desc = 'Next [W]orkspace' })
+  vim.keymap.set('n', '<leader>wT', ':tabprevious<CR>', { desc = 'Prev [W]orkspace' })
+  vim.keymap.set('n', '<leader>wn', ':tabnew<CR>', { desc = '[W]orkspace [N]ew' })
+  vim.keymap.set('n', '<leader>wr', ':tabclose<CR>', { desc = '[W]orkspace [R]emove' })
 end
 
 function M.lsp_keymaps(event)
@@ -108,7 +120,7 @@ function M.lsp_keymaps(event)
       end
 
       map('gd', builtin.lsp_definitions, '[G]oto [D]efinition')
-      map('ngd', lsp_definitions_new_tab, '[N]ew tab [G]oto [D]efinition')
+      -- map('ngd', lsp_definitions_new_tab, '[N]ew tab [G]oto [D]efinition')
       map('tg', builtin.lsp_type_definitions, '[G]oto [T]ype Definition')
       map('gr', builtin.lsp_references, '[G]oto [R]eferences')
       map('gI', builtin.lsp_implementations, '[G]oto [I]mplementation')
