@@ -29,7 +29,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
@@ -38,8 +38,6 @@ vim.g.have_nerd_font = false
 
 -- Make line numbers default
 vim.o.number = true
--- You can also add relative line numbers, to help with jumping.
---  Experiment for yourself to see if you like it!
 -- vim.o.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
@@ -605,6 +603,18 @@ require('lazy').setup({
       -- cursor location to LINE:COLUMN
       ---@diagnostic disable-next-line: duplicate-set-field
       statusline.section_location = function() return '%2l:%-2v' end
+      statusline.section_filename = function()
+        -- Get the icon for the current file
+        local icon, _ = require('nvim-web-devicons').get_icon(vim.fn.expand '%:t')
+        icon = icon or ''
+
+        -- Get the relative path (.:~ means relative to current project/home)
+        local path = vim.fn.expand '%:~:.'
+        if path == '' then return '[No Name]' end
+
+        -- Return the icon followed by the path
+        return icon .. ' ' .. path
+      end
 
       -- ... and there is more!
       --  Check out: https://github.com/nvim-mini/mini.nvim
