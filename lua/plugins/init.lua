@@ -57,4 +57,65 @@ return {
       },
     },
   },
+
+  {
+    'folke/tokyonight.nvim',
+    priority = 1000, -- Make sure to load this before all the other start plugins.
+    config = function()
+      ---@diagnostic disable-next-line: missing-fields
+      require('tokyonight').setup {
+        styles = {
+          comments = { italic = false }, -- Disable italics in comments
+        },
+      }
+
+      -- Load tokynight colorscheme
+      -- vim.cmd.colorscheme 'tokyonight-night'
+    end,
+  },
+
+  {
+    'rose-pine/neovim',
+    priority = 1000,
+    name = 'rose-pine',
+    config = function()
+      require('rose-pine').setup {
+        styles = {
+          bold = true,
+          italic = false,
+        },
+        highlight_groups = {
+          EndOfBuffer = { fg = 'base', bg = 'base' },
+        },
+      }
+
+      -- Load rose pine colorscheme
+      vim.cmd.colorscheme 'rose-pine'
+    end,
+  },
+
+  {
+    'webhooked/kanso.nvim',
+    lazy = false,
+    priority = 1000,
+  },
+
+  {
+    'ellisonleao/gruvbox.nvim',
+    priority = 1000,
+    config = function()
+      require('gruvbox').setup {
+        italic = {
+          comments = false,
+          emphasis = true,
+          folds = true,
+          operators = false,
+          strings = false,
+        },
+      }
+
+      -- Load gruvbox color scheme
+      -- vim.cmd.colorscheme 'gruvbox'
+    end,
+  },
 }
