@@ -395,10 +395,10 @@ require('lazy').setup({
             },
             workspace = {
               checkThirdParty = false,
-              library = { vim.env.VIMRUNTIME },
-              -- NOTE: this is a lot slower and will cause issues when working on your own configuration.
+              -- library = { vim.env.VIMRUNTIME },
+              library = vim.api.nvim_get_runtime_file('', true),
+              -- NOTE: this second version is a lot slower and will cause issues when working on your own configuration.
               --  See https://github.com/neovim/nvim-lspconfig/issues/3189
-              -- library = vim.api.nvim_get_runtime_file('', true),
             },
           })
         end,
